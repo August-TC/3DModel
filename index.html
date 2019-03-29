@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+
+    <title>3D</title>
+
+    <!-- vue.js -->
+    <script src="js/vue.js"></script>
+
+    <!-- jQuery js库 -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+    <div id="app">
+        <model-ply src="assets/model.ply" @on-load="onLoad" :background-alpha="bgAlpha" :rotation="rotation">
+        </model-ply>
+    </div>
+
+
+    <!-- vue vue-3d-model -->
+    <script src="js/vue-3d-model.js"></script>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                
+                rotation: {
+                    x: 0,
+                    y: 0,
+                    z: 0
+                }
+            },
+            methods: {
+                onLoad() {
+                    this.rotate();
+                },
+                rotate() {
+                    this.rotation.z += 0.01;
+
+                    requestAnimationFrame(this.rotate);
+                }
+            }
+        })
+
+    </script>
+    
+</body>
+
+</html>
